@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: ../../docker/frontend/Dockerfile
+    container_name: docker_on_vagrant.frontend
+    command: bash -c "yarn start"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+    expose:
+      - "3000"
+    tty: true
